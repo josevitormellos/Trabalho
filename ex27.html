@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carango</title>
+    <!-- Estilos CSS internos -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CARANGO</h1>
+        <!-- Formulário para receber os dois números -->
+        <form onsubmit="event.preventDefault(); Verificar();">
+            <label for="valor">Valor do Carro:</label>
+            <input type="number" id="valor" name="valor" required>
+            <label for="tipo">Tipo de Combustivel:</label>
+            <input type="number" id="tipo" name="tipo" required>
+            <button type="submit">Verificar</button>
+
+        </form>
+        <!-- Exibir o resultado da soma -->
+        <div id="resultado"></div>
+    </div>
+    <!-- Script JavaScript -->
+    <script>
+        
+        // Função para Verificar 3 casos especificos
+
+
+        function Verificar(){
+            let desconto = 0;
+            const valor = document.getElementById("valor");
+            const tipo = document.getElementById("tipo");
+            const resultado = document.getElementById("resultado");
+
+            if(tipo.value.toLowerCase() == "álcool"){
+                desconto = valor.value * 0.25;
+                resultado.innerHTML = `<p>Valor Desconto: ${desconto}</p>`;
+                resultado.innerHTML += `<p>Valor Pago: ${valor.value - desconto}</p>`;
+            }
+            else if(tipo.value.toLowerCase() == "gasolina"){
+                desconto = valor.value * 0.21;
+                resultado.innerHTML = `<p>Valor Desconto: ${desconto}</p>`;
+                resultado.innerHTML += `<p>Valor Pago: ${valor.value - desconto}</p>`;
+            }
+            else if (tipo.value.toLowerCase() == "diesel"){
+                desconto = valor.value * 0.14;
+                resultado.innerHTML = `<p>Valor Desconto: ${desconto}</p>`;
+                resultado.innerHTML += `<p>Valor Pago: ${valor.value - desconto}</p>`;
+            }
+            else{
+                resultado.innerHTML = `<p>Desconto invalido escolha entre : gasolina, diesel ou álcool</p>`;
+            }
+            valor.value = null;
+            tipo.value = null;
+            
+        }
+    </script>
+</body>
+</html>

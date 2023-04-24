@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média de Notas</title>
+    <!-- Estilos CSS internos -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Média de Notas</h1>
+        <!-- Formulário para receber os dois números -->
+        <form onsubmit="event.preventDefault(); CalcularMedia();">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="nota1">Nota 1:</label>
+            <input type="number" id="nota1" name="nota1" required>
+            <label for="nota2">Nota 2:</label>
+            <input type="number" id="nota2" name="nota2" required>
+            <label for="nota3">Nota 3:</label>
+            <input type="number" id="nota3" name="nota3" required>
+            <button type="submit">Calcular Soma</button>
+        </form>
+        <!-- Exibir o resultado da soma -->
+        <div id="resultado"></div>
+    </div>
+    <!-- Script JavaScript -->
+    <script>
+        // Função para calcular a soma dos números
+        function CalcularMedia() {
+            // Obtendo os elementos do DOM pelos IDs
+            const nome = document.getElementById("nome");
+            const nota1 = document.getElementById("nota1");
+            const nota2 = document.getElementById("nota2");
+            const nota3 = document.getElementById("nota3");
+            const resultado = document.getElementById("resultado");
+
+            // Convertendo os valores dos inputs para números e realizando a soma
+            const media = (parseFloat(nota1.value) + parseFloat(nota2.value)+  parseFloat(nota3.value))/3;
+
+            // Exibindo o resultado no elemento div
+            resultado.innerHTML = `<p>Aluno ${nome.value} teve a media: ${media.toFixed(1)}</p>`;
+        }
+    </script>
+</body>
+</html>

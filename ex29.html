@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MES</title>
+    <!-- Estilos CSS internos -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Verificação de Mês</h1>
+        <!-- Formulário para receber os dois números -->
+        <form onsubmit="event.preventDefault(); Verificar();">
+            <label for="mes">Digite o mês:</label>
+            <input type="number" id="mes" name="mes" required>
+            <button type="submit">Verificar</button>
+
+        </form>
+        <!-- Exibir o resultado da soma -->
+        <div id="resultado"></div>
+    </div>
+    <!-- Script JavaScript -->
+    <script>
+        
+        // Função para Verificar 3 casos especificos
+
+
+        function Verificar(){
+            const mes = document.getElementById("mes");
+            const resultado = document.getElementById("resultado");
+
+            switch(mes.value){
+                case 1:
+                    resultado.innerHTML = `<p>Mes 1: Janeiro</p>`;
+                    break;
+                case 2: 
+                    resultado.innerHTML = `<p>Mes 2: Fevereiro</p>`;
+                    break;
+                case 3: 
+                    resultado.innerHTML = `<p>Mes 3: Março</p>`;
+                    break;
+                case 4: 
+                    resultado.innerHTML = `<p>Mes 4: Abril</p>`;
+                    break;
+                case 5: 
+                    resultado.innerHTML = `<p>Mes 5: Maio</p>`;
+                    break;
+                case 6: 
+                    resultado.innerHTML = `<p>Mes 6: Junho</p>`;
+                    break;
+                case 7: 
+                    resultado.innerHTML = `<p>Mes 7: Julho</p>`;
+                    break;
+                case 8: 
+                    resultado.innerHTML = `<p>Mes 8: Agosto</p>`;
+                    break;
+                case 9: 
+                    resultado.innerHTML = `<p>Mes 9: Setembro</p>`;
+                    break;
+                case 10: 
+                    resultado.innerHTML = `<p>Mes 10: Outobro</p>`;
+                    break;
+                case 11: 
+                    resultado.innerHTML = `<p>Mes 11: Novembro</p>`;
+                    break;
+                case 12: 
+                    resultado.innerHTML = `<p>Mes 12: Dezembro</p>`;
+                    break;
+                default: 
+                    resultado.innerHTML = `<p>Mes Invalido</p>`;
+                    break;
+            }
+        
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homens e Mulheres</title>
+    <!-- Estilos CSS internos -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Verificação de Homens e Mulheres</h1>
+        <!-- Formulário para receber os dois números -->
+        <form onsubmit="event.preventDefault(); Add();">
+            <label for="nome">Digite Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="sexo">Digite seu sexo (H ou M):</label>
+            <input type="char" id="sexo" name="sexo" required>
+            <button type="submit">Verificar</button>
+        </form>
+        <!-- Exibir o resultado da soma -->
+        <div id="resultado"></div>
+    </div>
+    <!-- Script JavaScript -->
+    <script>
+        var h = 0;
+        var m = 0;
+        var contador = 0;
+        // Função para calcular a soma dos números
+        function Add() {
+            const nome = document.getElementById("nome");
+            const sexo = document.getElementById("sexo");
+            const resultado = document.getElementById("resultado");
+            // Obtendo os elementos do DOM pelos IDs
+            if( sexo.value.toUpperCase() == "H"){
+                h ++;
+                contador ++;
+                resultado.innerHTML += `<p>Nome:  ${nome.value}   Sexo: Homem</p>`;
+            }
+            else if(sexo.value.toUpperCase() == "M"){
+                m++;
+                contador ++;
+                resultado.innerHTML += `<p>Nome:  ${nome.value}   Sexo: Mulher</p>`;
+            }
+            
+            nome.value = null;
+            sexo.value = null;
+            console.log(h + " " + m);
+            if(contador == 56){
+                
+                resultado.innerHTML += `<p>Total ${h} de Homens e Total ${m} de Mulheres</p>`;
+            }
+          
+            
+        }
+    </script>
+</body>
+</html>

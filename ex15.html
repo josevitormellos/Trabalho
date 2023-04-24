@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação</title>
+    <!-- Estilos CSS internos -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Verificação - Está entre 100 e 200</h1>
+        <!-- Formulário para receber os dois números -->
+        <form onsubmit="event.preventDefault(); Verificar();">
+            <label for="num">Escolha Numero:</label>
+            <input type="number" id="num" name="num" required>
+            <button type="submit">Verificar</button>
+        </form>
+        <!-- Exibir o resultado da soma -->
+        <div id="resultado"></div>
+    </div>
+    <!-- Script JavaScript -->
+    <script>
+        // Função para calcular a soma dos números
+        function Verificar() {
+            // Obtendo os elementos do DOM pelos IDs
+            const num = document.getElementById("num");
+            const resultado = document.getElementById("resultado");
+
+            // Convertendo os valores dos inputs para números e realizando a soma
+            const verifica = ((num.value > 100) && (num.value < 200));
+
+            if(verifica ){
+                resultado.innerHTML = `<p>${num.value} está entre 100 e 200</p>`;
+            }
+            else{
+                resultado.innerHTML = `<p>${num.value} não está entre 100 e 200</p>`;
+            }
+
+            // Exibindo o resultado no elemento div
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação</title>
+    <!-- Estilos CSS internos -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Verificações</h1>
+        <!-- Formulário para receber os dois números -->
+        <form onsubmit="event.preventDefault(); Verificar();">
+            <label for="num1">Digite o Numero 1º:</label>
+            <input type="number" id="num1" name="num1" required>
+            <label for="num2">Digite o Numero 2º:</label>
+            <input type="number" id="num2" name="num2" required>
+            <button type="submit">Verificar</button>
+
+        </form>
+        <!-- Exibir o resultado da soma -->
+        <div id="resultado"></div>
+    </div>
+    <!-- Script JavaScript -->
+    <script>
+        
+        // Função para Verificar 3 casos especificos
+
+
+        function Verificar(){
+            const num1 = document.getElementById("num1");
+            const num2 = document.getElementById("num2");
+            const resultado = document.getElementById("resultado");
+
+            if(num1.value == num2.value){
+                resultado.innerHTML = `<p>Os dois valores enviados são iguais</p>`;
+            }
+            else if(num1.value < num2.value){
+                resultado.innerHTML = `<p>O valor 2:${num2.value} é maior que o valor ${num1.value}. Logo são diferentes</p>`;
+            }
+            else{
+                resultado.innerHTML = `<p>O valor 1:${num1.value} é maior que o valor ${num2.value}. Logo são diferentes</p>`;
+            }
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação</title>
+    <!-- Estilos CSS internos -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Verificações</h1>
+        <!-- Formulário para receber os dois números -->
+        <form onsubmit="event.preventDefault(); Verificar();">
+            <label for="num">Digite o Numero:</label>
+            <input type="number" id="num" name="num" required>
+            <button type="submit">Verificar</button>
+
+        </form>
+        <!-- Exibir o resultado da soma -->
+        <div id="resultado"></div>
+    </div>
+    <!-- Script JavaScript -->
+    <script>
+        
+        // Função para Verificar 3 casos especificos
+
+
+        function Verificar(){
+            const num = document.getElementById("num");
+            const resultado = document.getElementById("resultado");
+            if(num.value > 80){
+                resultado.innerHTML = `<p>Acertou a Primeira Verificação  ${num.value} > 80</p>`;
+            }
+            else if(num.value < 25){
+                resultado.innerHTML = `<p>Acertou a Segunda Verificação  ${num.value} < 25</p>`;
+            }
+            else if(num.value == 40){
+                resultado.innerHTML = `<p>Acertou a Terceira Verificação  ${num.value} == 40</p>`;
+            }
+            
+        }
+    </script>
+</body>
+</html>
