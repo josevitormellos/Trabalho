@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extenso</title>
+    <style>
+        body {
+                font-family: Arial, sans-serif;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            label {
+                font-weight: bold;
+            }
+            button {
+                background-color: #4CAF50;
+                color: white;
+                font-size: 1.1em;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Numeros por extenso</h1>
+
+        <form onsubmit="event.preventDefault(); calcular();">
+            <label for="num">Digite um número entre 1 e 5:</label>
+            <input type="number" id="num" name="" required>
+            <button type="submit" id="botao">Calcular</button>
+        </form>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+
+        function calcular(){
+
+            var num = parseFloat(document.getElementById("num").value)
+            var resultado = document.getElementById("resultado")
+            var extenso = ""
+            
+
+            if(num >= 1 && num <= 5){
+                if(num == 1){
+                    extenso = "Um"
+                }
+                else if(num == 2){
+                    extenso = "Dois"
+                }
+                else if(num == 3){
+                    extenso = "Três"
+                }
+                else if(num == 4){
+                    extenso = "Quatro"
+                }
+                else if(num == 5){
+                    extenso = "Cinco"
+                }
+                resultado.innerHTML = `<p>${num} por extenso é ${extenso}</p>`
+            }
+                
+            else{
+                resultado.innerHTML = `<p>Número inválido</p>`
+            }
+        }
+    </script>
+    
+</body>
+</html>

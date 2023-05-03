@@ -1,0 +1,78 @@
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Idades</title>
+
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            label {
+                font-weight: bold;
+            }
+            button {
+                background-color: #4CAF50;
+                color: white;
+                font-size: 1.1em;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Idades</h1>
+
+            <form onsubmit="event.preventDefault(); verMaior();">
+                <label for="idade" id="cont-idade">Idade da 1° pessoa:</label>
+                <input type="number" id="idade" name="idade" required>
+                <button type="submit">Confirmar</button>
+            </form>
+
+            <div id="resultado"></div>
+        </div>
+
+        <script>
+            var contador = 1
+            function verMaior(){
+
+                var resultado = document.getElementById("resultado")
+                var idade = parseFloat(document.getElementById("idade").value)
+                var pessoa = document.getElementById("cont-idade")
+                var status = ""
+
+                if(idade >= 18){
+                    status = "Maior"
+                }
+                else{
+                    status = "Menor"
+                }  
+
+                
+                resultado.innerHTML = `<p>A ${contador}° pessoa é ${status} de idade</p>`
+                contador += 1
+                pessoa.innerText = `Idade da ${contador}° pessoa:`
+                
+            }
+            
+            
+        </script>
+    </body>
+    </html>

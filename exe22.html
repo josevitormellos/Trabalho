@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucros dos produtos</title>
+    <style>
+        body {
+                font-family: Arial, sans-serif;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            label {
+                font-weight: bold;
+            }
+            button {
+                background-color: #4CAF50;
+                color: white;
+                font-size: 1.1em;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calculo de lucros</h1>
+
+        <form onsubmit="event.preventDefault(); calcular();">
+            <label for="custo" id="prod">Custo do produto 1:</label>
+            <input type="number" id="custo" name="" required>
+            <label for="ano">Valor de venda:</label>
+            <input type="number" id="venda" name="" required>
+            <button type="submit" id="botao">Calcular</button>
+        </form>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        var contador = 1
+        var somaC = 0
+        var somaV = 0
+
+        function calcular(){
+            var custo = parseFloat(document.getElementById("custo").value)
+            var venda = parseFloat(document.getElementById("venda").value)
+            var resultado = document.getElementById("resultado")
+            var status = ""
+            var prod = document.getElementById("prod")
+
+            somaC += custo
+            somaV += venda
+
+            if(contador < 40){
+                if(custo < venda){
+                    status = `lucro de R$${venda - custo}`
+                }
+                else if(venda < custo){
+                    status = `Prejuizo de R$${custo - venda}`
+                }
+                else{
+                    status = "Empate"
+                }
+
+                contador += 1
+            
+                prod.innerText = `Custo do produto ${contador}:`
+                resultado.innerHTML = `<p>Status: ${status}</p>`
+
+            }
+
+            else{
+                document.getElementById("botao").remove()
+
+                prod.innerText = "Custo do produto"
+
+                resultado.innerHTML = `<h3>Resultado dos 40 produtos</h3>`
+
+                resultado.innerHTML += `<p>Media de custos: ${(somaC / 40).toFixed(2)}</p>`
+                resultado.innerHTML += `<p>Media de vendas: ${(somaV / 40).toFixed(2)}</p>`
+            }
+
+
+        }
+
+    </script>
+    
+</body>
+</html>

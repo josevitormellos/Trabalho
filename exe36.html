@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conta de luz</title>
+    <style>
+        body {
+                font-family: Arial, sans-serif;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            label {
+                font-weight: bold;
+            }
+            button {
+                background-color: #4CAF50;
+                color: white;
+                font-size: 1.1em;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calcular conta de luz</h1>
+
+        <form onsubmit="event.preventDefault(); verificar();">
+            <label for="consumo">Consumo em KW/h:</label>
+            <input type="number" id="consumo" name="" required>
+
+            <label for="tipo">Tipo da instalação: Residência, Comércio, indústria</label>
+            <label for="tipo">(R, C, I):</label>
+            <input type="text" id="tipo" maxlength="1" name="" required>
+
+
+            <button type="submit" id="botao">Verificar</button>
+        </form>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function verificar(){
+
+            var consumo = parseFloat(document.getElementById("consumo").value);
+            var tipo = document.getElementById("tipo").value[0];
+            var resultado = document.getElementById("resultado")
+            var variavel
+
+            if(["c","C","i","I","R","r"].includes(tipo)){
+                if (tipo == "C"){
+                    variavel = 0.48
+                }
+                else if(tipo == "R"){
+                    variavel = 0.6
+                }
+                else{
+                    variavel = 1.29
+                }
+
+                resultado.innerHTML = `<p>Valor da conta de luz: ${consumo * variavel}</p>`
+
+            }
+
+            else{
+                resultado.innerHTML = `<p>ERRO: algum campo não foi preenchido corretamente</p>`
+            }
+
+        }
+        
+    </script>
+    
+</body>
+</html>

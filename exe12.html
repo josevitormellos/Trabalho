@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custo da fábrica</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Custo carro</h1>
+
+        <form onsubmit="event.preventDefault(); calcular();">
+            <label for="Valor">Custo da fábrica:</label>
+            <input type="number" id="valor" name="" required>
+            <button type="submit">Calcular</button>
+        </form>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+
+        function calcular() {
+            
+            const  resultado = document.getElementById("resultado");
+            var custo = document.getElementById("valor");
+            var imposto = parseFloat(custo.value) * 0.45;
+            var distribuidor = (parseFloat(custo.value) + imposto) * 0.28;
+            var total = parseFloat(valor.value) + imposto + distribuidor;
+            
+            resultado.innerHTML = `<p>O valor final para o consumidor é ${total}</p>`;
+           
+        }
+    </script>
+</body>
+</html>

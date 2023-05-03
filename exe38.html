@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciência da computação</title>
+    <style>
+        body {
+                font-family: Arial, sans-serif;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            label {
+                font-weight: bold;
+            }
+            button {
+                background-color: #4CAF50;
+                color: white;
+                font-size: 1.1em;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calcular Média</h1>
+
+        <form onsubmit="event.preventDefault(); verificar();">
+            <label for="n1">Nota do trabalho de laboratório:</label>
+            <input type="text" id="n1" name="" required>
+
+            <label for="n2">Nota da avaliação semestral:</label>
+            <input type="text" id="n2" name="" required>
+
+            <label for="n3">Nota do exame final:</label>
+            <input type="text" id="n3" name="" required>
+
+            <button type="submit" id="botao">Verificar</button>
+        </form>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function verificar(){
+
+            var lab = parseFloat(document.getElementById("n1").value);
+            var aval = parseFloat(document.getElementById("n2").value);
+            var final = parseFloat(document.getElementById("n3").value);        
+            var resultado = document.getElementById("resultado")
+            var media = (lab * 2 + aval * 3 + final * 5) / 10
+
+            resultado.innerHTML = `<p>A média ponderada é ${media.toFixed(2)}</p>`
+
+        }
+        
+    </script>
+    
+</body>
+</html>

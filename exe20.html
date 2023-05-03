@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carango velho</title>
+    <style>
+        body {
+                font-family: Arial, sans-serif;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            label {
+                font-weight: bold;
+            }
+            button {
+                background-color: #4CAF50;
+                color: white;
+                font-size: 1.1em;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calculo de desconto</h1>
+
+        <form onsubmit="event.preventDefault(); calcularDesconto();">
+            <label for="valor">Valor do veículo:</label>
+            <input type="number" id="valor" name="" required>
+            <label for="ano">Ano do veículo:</label>
+            <input type="number" id="ano" name="" required>
+            <button type="submit" id="botao">Calcular</button>
+        </form>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        var carros2000 = 0
+        var total = 0
+
+        function calcularDesconto(){
+
+            var valor = parseFloat(document.getElementById("valor").value)
+            var ano = parseFloat(document.getElementById("ano").value)
+            var resultado = document.getElementById("resultado")
+            var desconto
+
+            if(ano <= 2000){
+                desconto = valor * 0.12
+                carros2000 += 1
+            }
+            else{
+                desconto = valor * 0.07
+                total += 1
+            }
+
+            resultado.innerHTML = `<p>O desconto é ${desconto.toFixed(2)}</p>`
+
+            var continuar = window.prompt("Deseja continuar?").toUpperCase()
+
+            if(continuar[0] == "N"){
+                document.getElementById("botao").remove()
+
+                resultado.innerHTML = `<br>Total de carros com ano até 2000: ${carros2000}<br><br>Total geral: ${total + carros2000}`
+            }
+
+        }
+    </script>
+    
+</body>
+</html>
